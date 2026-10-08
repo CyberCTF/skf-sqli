@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://www.isoloom.com/schema/v1.json
+# OWASP SKF SQL Injection (Union) (OWASP Security Knowledge Framework labs, by Glenn ten Cate, Riccardo ten Cate and the SKF contributors) as an Isoloom spec:
+# a Flask page viewer that builds its SQLite query from the page id in the URL (union-based SQL injection). The SKF lab folder python/SQLI is
+# vendored unchanged in app/ and built by its own Dockerfile.
+# `isoloom generate`, then `isoloom run docker`.
+version: 1
+name: skf-sqli
+
+networks:
+  lab: { cidr: 10.60.130.0/24, internet: false }
+
+machines:
+  web:
+    networks: { lab: 10 }
+    services: [{ port: 5000, name: web, http: true, publish: 5050 }]
+    resources: { cpus: 1, memory_mb: 256 }
+    docker:
+      build: app
+
+checks:
+  - name: the lab answers
+    http: http://web:5000/
+    wait: 120
+  - name: a page is read from the database by its id in the URL
+    script: checks/page.sh
+
+message: |
+  OWASP SKF SQL Injection (Union) answers at http://localhost:{{ machines.web.services.0.publish }}/.
+  Pages are read by id from /home/<id>: what does the database do with an id that is not a number?
