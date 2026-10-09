@@ -4,11 +4,5 @@
   "question": "Use a UNION-based SQL injection in the page id to read data from other tables of the database, such as the users' credentials.",
   "category": "WEB",
   "difficulty": 1,
-  "evidence_kind": "SECRET",
-  "capabilities": [
-    "sql-injection",
-    "union-based",
-    "sqlite",
-    "injection"
-  ]
+  "evidence_kind": "SECRET"
 }
