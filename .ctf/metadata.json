@@ -1,7 +1,7 @@
 {
   "title": "OWASP SKF SQL Injection (Union)",
   "description": "A small Flask site that shows pages from a SQLite database. The page id taken from the URL path is concatenated into the SQL query.",
-  "question": "Use a UNION-based SQL injection in the page id to read data from other tables of the database, such as the users' credentials.",
+  "question": "Use a UNION-based SQL injection in the page id to read the flags table of the database.",
   "category": "WEB",
   "difficulty": 1,
   "evidence_kind": "SECRET"

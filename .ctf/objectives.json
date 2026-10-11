@@ -1,0 +1,52 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Read the flag",
+      "prompt": "Read the flags table with a UNION-based SQL injection.",
+      "check": {
+        "evidence": "SECRET",
+        "format": "FLAG{%s}"
+      },
+      "dev": "FLAG{dev-skf-sqli}",
+      "hints": [
+        "The page id in the URL path is concatenated into the SQL query.",
+        "Read about UNION-based SQL injection and how to list SQLite tables."
+      ],
+      "steps": [
+        {
+          "key": "db",
+          "title": "Identify the database",
+          "prompt": "Which database engine stores the pages?",
+          "check": {
+            "answer": [
+              "sqlite",
+              "sqlite3"
+            ]
+          }
+        },
+        {
+          "key": "technique",
+          "title": "Name the technique",
+          "prompt": "Which SQL operator combines your query's rows with the page's?",
+          "check": {
+            "answer": [
+              "union",
+              "union select"
+            ]
+          }
+        },
+        {
+          "key": "table",
+          "title": "Find the target",
+          "prompt": "Which table holds the flag?",
+          "check": {
+            "answer": [
+              "flags"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
