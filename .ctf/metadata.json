@@ -1,8 +1,11 @@
 {
+  "project_name": "cyberlabs-skf-sqli",
+  "slug": "skf-sqli",
   "title": "OWASP SKF SQL Injection (Union)",
   "description": "A small Flask site that shows pages from a SQLite database. The page id taken from the URL path is concatenated into the SQL query.",
-  "question": "Use a UNION-based SQL injection in the page id to read the flags table of the database.",
-  "category": "WEB",
+  "category": "web",
   "difficulty": 1,
-  "evidence_kind": "SECRET"
+  "evidence_kind": "SECRET",
+  "capabilities": [],
+  "question": "Use a UNION-based SQL injection in the page id to read the flags table of the database."
 }
